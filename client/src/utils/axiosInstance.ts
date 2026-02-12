@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = import.meta.env.BASE_URL as string;
+const baseUrl = import.meta.env.VITE_BASE_URL as string;
 
 if (!baseUrl) {
     throw new Error("Base Url is missing")
@@ -8,7 +8,7 @@ if (!baseUrl) {
 
 const axiosInstance = axios.create({
     baseURL: baseUrl,
-    withCredentials: true,
+    // withCredentials: true,
     headers: {
         "Content-Type": "application/json",
     },

@@ -1,57 +1,71 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { getCartApi, addToCartApi } from '../../services/cart.service';
-import type { CartItem } from '../../types/cart';
-
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { getCartApi, addToCartApi } from "../../services/cart.service";
+import type { CartItem } from "../../types/cart";
 
 interface CartState {
-    items: CartItem[];
-    loading: boolean;
+  items: CartItem[];
+  loading: boolean;
 }
 
 const initialState: CartState = {
-    items: [],
-    loading: false,
-}
+  items: [],
+  loading: false,
+};
 
 // GET cart
 export const fetchCart = createAsyncThunk(
-    "cart/fetchCart",
-    async () => {
-        const res = await getCartApi()
-        return res.data!.items
-    }
-)
+  "cart/fetchCart",
+  async () => {
+    const res = await getCartApi();
 
-// ADD to cart 
+    const data = res.data;
+
+    if (!data || !Array.isArray(data.items)) {
+      return [];
+    }
+
+    return data.items
+  }
+);
+
+
+// ADD to cart (FIXED)
 export const addToCart = createAsyncThunk(
-    "cart/addToCart",
-    async (productId: string, { dispatch }) => {
-        await addToCartApi(productId)
+  "cart/addToCart",
+  async (
+    payload: { productId: string; quantity: number },
+    { dispatch }
+  ) => {
+    const { productId, quantity } = payload;
 
-        // Refresh cart after add
-        dispatch(fetchCart());
-    }
+    await addToCartApi(productId, quantity);
 
+    // Refresh cart after add
+    dispatch(fetchCart());
+  }
 );
 
 const cartSlice = createSlice({
-    name: "Cart",
-    initialState,
-    reducers: {},
+  name: "Cart",
+  initialState,
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchCart.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(fetchCart.fulfilled, (state, action) => {
+        console.log("PAYLOAD TYPE:", typeof action.payload);
+        console.log("IS ARRAY:", Array.isArray(action.payload));
+        console.log("PAYLOAD:", action.payload);
 
-    extraReducers: (builder) => {
-        builder
-            .addCase(fetchCart.pending, (state) => {
-                state.loading = true
-            })
-            .addCase(fetchCart.fulfilled, (state, action) => {
-                state.items = action.payload;
-                state.loading = false
-            })
-            .addCase(fetchCart.rejected, (state) => {
-                state.loading = false;
-            })
-    }
-})
+        state.items = action.payload as any;
+        state.loading = false;
+      })
+      .addCase(fetchCart.rejected, (state) => {
+        state.loading = false;
+      })
+  },
+});
 
 export default cartSlice.reducer;

@@ -1,0 +1,101 @@
+[
+    {
+        "name": "Wireless Mouse",
+        "description": "Ergonomic wireless mouse",
+        "price": 799,
+        "image": "mouse.jpg",
+        "imagePublicUrl": "https://cdn.example.com/mouse.jpg",
+        "stock": 120,
+        "isActive": true,
+        "createdAt": {
+            "$date": "2025-01-01T10:00:00.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-01-01T10:00:00.000Z"
+        }
+    },
+    {
+        "name": "Mechanical Keyboard",
+        "description": "RGB mechanical keyboard",
+        "price": 3499,
+        "image": "keyboard.jpg",
+        "imagePublicUrl": "https://cdn.example.com/keyboard.jpg",
+        "stock": 80,
+        "isActive": true,
+        "createdAt": {
+            "$date": "2025-01-01T10:00:00.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-01-01T10:00:00.000Z"
+        }
+    },
+    {
+        "name": "USB-C Charger",
+        "description": "Fast charging USB-C adapter",
+        "price": 1299,
+        "stock": 200,
+        "isActive": true,
+        "createdAt": {
+            "$date": "2025-01-01T10:00:00.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-01-01T10:00:00.000Z"
+        }
+    },
+    {
+        "name": "Product 4",
+        "description": "Description for product 4",
+        "price": 600,
+        "stock": 54,
+        "isActive": true,
+        "createdAt": {
+            "$date": "2025-01-01T10:00:00.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-01-01T10:00:00.000Z"
+        }
+    },
+    {
+        "name": "Product 5",
+        "description": "Description for product 5",
+        "price": 625,
+        "image": "product-5.jpg",
+        "imagePublicUrl": "https://cdn.example.com/product-5.jpg",
+        "stock": 55,
+        "isActive": true,
+        "createdAt": {
+            "$date": "2025-01-01T10:00:00.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-01-01T10:00:00.000Z"
+        }
+    },
+    {
+        "name": "Product 6",
+        "description": "Description for product 6",
+        "price": 650,
+        "stock": 56,
+        "isActive": false,
+        "createdAt": {
+            "$date": "2025-01-01T10:00:00.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-01-01T10:00:00.000Z"
+        }
+    },
+    {
+        "name": "Product 7",
+        "description": "Description for product 7",
+        "price": 675,
+        "image": "product-7.jpg",
+        "imagePublicUrl": "https://cdn.example.com/product-7.jpg",
+        "stock": 57,
+        "isActive": true,
+        "createdAt": {
+            "$date": "2025-01-01T10:00:00.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-01-01T10:00:00.000Z"
+        }
+    }
+]
