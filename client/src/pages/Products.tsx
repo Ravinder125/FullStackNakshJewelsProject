@@ -5,6 +5,7 @@ import { useAppDispatch } from "../app/store/hooks";
 import { addToCart } from "../app/slices/cartSlice";
 import image from '../assets/qrCode.png'
 import ProductCard from "../components/ProductCard";
+import { Link } from "react-router-dom";
 
 const Products = () => {
     const dispatch = useAppDispatch();
@@ -31,6 +32,8 @@ const Products = () => {
     return (
         <div className="container" >
             <h1>Products</h1>
+
+            <Link to="/cart" style={{ display: "block" }}>Cart</Link>
 
             {loading && <p>Loading products...</p>}
 
